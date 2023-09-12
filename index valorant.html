@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valorant</title>
+  <link rel="icon" type="image/png" href="iniciodepagina.gif">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: black;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 20px;
+      height: 71px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    #logo {
+      width: 100px;
+    }
+
+    #logo img {
+      width: 100%;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      flex: 1;
+      justify-content: center;
+    }
+
+    nav ul li {
+      position: relative;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 10px;
+    }
+
+    nav ul li a:hover::before {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: 0;
+      width: 100%;
+      height: calc(100% + 10px);
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .menu {
+      display: none;
+      position: absolute;
+      background-color: #b0bec5;
+      border-radius: 5px;
+      padding: 10px;
+      top: 60px;
+      left: 0;
+      z-index: 1;
+    }
+
+    nav ul li:hover .menu {
+      display: block;
+    }
+
+    #login {
+      background-color: white;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      margin-left: 20px;
+    }
+
+    #login img {
+      width: 20px;
+      height: 20px;
+    }
+
+    #search-container {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+      margin-right: 20px;
+    }
+
+    #search-input {
+      border: none;
+      padding: 8px;
+      border-radius: 5px;
+      margin-right: 10px;
+      width: 200px;
+    }
+
+    #search-button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #valorant {
+      font-size: 36px;
+      color: red;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-left: 40px;
+    }
+
+    /* Estilos adicionales para el slider de imágenes */
+    #image-slider {
+      text-align: center;
+      margin: 20px auto; /* Centro verticalmente y añade margen en los lados */
+      max-width: 80%; /* Reducir el ancho del slider */
+      overflow: hidden;
+      position: relative;
+    }
+
+    #image-slider img {
+      max-width: 100%; /* Cambia el ancho máximo de las imágenes al 100% */
+      height: auto;
+      display: block;
+      margin: 10px auto; /* Añade espacio entre las imágenes */
+    }
+
+    .slider-button {
+      font-size: 24px;
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #prev-button {
+      left: 20px;
+    }
+
+    #next-button {
+      right: 20px;
+    }
+
+    /* Estilo de la pantalla de inicio */
+    #inicio {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: white; /* Fondo blanco */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2; /* Coloca la pantalla de inicio sobre el contenido */
+    }
+
+    /* Estilo del logo de inicio */
+    #logo-inicio {
+      width: 200px; /* Ajusta el ancho según tus necesidades */
+      height: auto;
+      display: block;
+      opacity: 1; /* La opacidad inicial es 1 para que sea visible */
+    }
+
+    /* Estilo del contenido principal */
+    #contenido {
+      opacity: 0; /* El contenido principal está oculto inicialmente */
+      transition: opacity 1s ease; /* Animación de transición de opacidad */
+      z-index: 1; /* Coloca el contenido principal debajo de la pantalla de inicio */
+      text-align: center;
+      padding: 20px; /* Espacio debajo del slider */
+    }
+
+    #titulo-atrevete {
+      font-size: 46px;
+      color: #333;
+    }
+
+    #texto-atrevete {
+     font-size: 24px;
+     color: #666;
+     margin: 20px 0;
+     max-width: 500px; /* Ajusta el ancho máximo según tus necesidades */
+     word-wrap: break-word;
+  }
+
+    /* Estilos para las imágenes en fila */
+    .imagen {
+      display: inline-block;
+      margin: 80px;
+      transition: transform 0.3s; /* Agregar transición para el efecto de escala al pasar el ratón */
+      cursor: pointer; /* Cambiar el cursor al pasar el ratón por encima de la imagen */
+    }
+
+    .imagen:hover {
+      transform: scale(2); /* Aumentar el tamaño de la imagen al pasar el ratón */
+    }
+
+    /* Estilos para el footer */
+    footer {
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Pantalla de inicio con el logo -->
+  <div id="inicio">
+    <img id="logo-inicio" src="iniciodepagina.gif" alt="Logo de inicio">
+  </div>
+
+  <!-- Contenido principal -->
+  <div id="contenido">
+    <header>
+      <div id="logo">
+        <a href="index valorant.html">
+          <img src="logo.jpeg" alt="Riot Games">
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a href="noticias.html">NOTICIAS</a>
+          </li>
+          <li>
+            <a href="info_juego.html">INFO DEL JUEGO</a>
+          </li>
+          <li>
+            <a href="pase_batalla.html">PASE DE BATALLA</a>
+          </li>
+          <li>
+            <a href="comunidad.html">COMUNIDAD</a>
+          </li>
+          <li>
+            <div id="valorant">Valorant</div>
+          </li>
+        </ul>
+      </nav>
+      <div id="search-container">
+        <input type="text" id="search-input" placeholder="Buscar...">
+        <button id="search-button">Buscar</button>
+      </div>
+      <div id="login">
+        <img src="icono de inicio de sesion.png" alt="Icono de Iniciar Sesión">
+        <!-- Texto o enlace para iniciar sesión -->
+      </div>
+    </header>
+
+    <!-- Contenedor del slider de imágenes -->
+    <div id="image-slider">
+      <img src="videojuegos inicio1.jpg" alt="Imagen inicial">
+      <div id="prev-button" class="slider-button">&#9664;</div>
+      <div id="next-button" class="slider-button">&#9654;</div>
+    </div>
+
+ <!-- Contenedor del texto "ATREVETE" y el texto debajo -->
+<div id="texto-contenedor" style="display: flex; flex-direction: column; align-items: center;">
+  <!-- Título "ATREVETE" -->
+  <h1 id="titulo-atrevete">ATREVETE</h1>
+
+  <!-- Texto debajo del título -->
+  <p id="texto-atrevete" style="text-align: center;">
+    Conoce un nuevo mundo, un nuevo juego que combina
+    todo lo más deseado, ESTRATEGIA, ARMAS Y PODERES.
+    Estás listo para afrontar el reto, ven y visita las páginas oficiales
+    de VALORANT y RIOTGAMES. ¡HAZ CLICK!.
+  </p>
+  <div style="height: 20px; background-color: white;"></div>
+</div>
+
+<!-- Imágenes en fila con enlaces -->
+<a href="https://playvalorant.com/es-es/pbe/" target="_blank">
+  <img class="imagen" src="inicio1.jpeg" alt="Imagen 1">
+</a>
+<a href="https://www.riotgames.com/es" target="_blank">
+  <img class="imagen" src="inicio2.png" alt="Imagen 2" style="margin-right: 20px;"> <!-- Aumenté el margen derecho aquí -->
+</a>
+
+<!-- Líneas blancas para separar las imágenes del footer -->
+<div style="height: 30px; background-color: white;"></div>
+<div style="height: 30px; background-color: white;"></div>
+<div style="height: 30px; background-color: white;"></div>
+<div style="height: 30px; background-color: white;"></div>
+
+    <script>
+      const images = ["videojuegos inicio1.jpg", "videojuegos inicio2.png", "videojuegos inicio3.png"];
+      let currentIndex = 0;
+
+      const imgElement = document.querySelector("#image-slider img");
+      const prevButton = document.querySelector("#prev-button");
+      const nextButton = document.querySelector("#next-button");
+
+      function updateImage() {
+        imgElement.src = images[currentIndex];
+      }
+
+      prevButton.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateImage();
+      });
+
+      nextButton.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateImage();
+      });
+
+      // Mostrar la primera imagen al cargar la página
+      updateImage();
+
+      // Desvanecer la pantalla de inicio y mostrar el contenido después de 5 segundos
+      setTimeout(() => {
+        const inicio = document.getElementById("inicio");
+        const contenido = document.getElementById("contenido");
+
+        inicio.style.opacity = "0";
+        contenido.style.opacity = "1";
+        setTimeout(() => {
+          inicio.style.display = "none";
+        }, 1000); // Espera 1 segundo para ocultar la pantalla de inicio
+      }, 3000); // Espera 5 segundos antes de realizar la transición
+    </script>
+  </div>
+
+    <!-- Footer -->
+    <footer>
+      © 2023 Todos los derechos reservados - Contacto: dennisaurio2000@gmail.com
+    </footer>
+ 
+</body>
+</html>

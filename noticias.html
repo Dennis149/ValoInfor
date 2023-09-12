@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noticias - Valorant</title>
+  <link rel="icon" type="image/png" href="iniciodepagina.gif">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: black;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 20px;
+      height: 70px;
+      position: sticky; /* Hacer el encabezado pegajoso */
+      top: 0; /* Pegarlo en la parte superior */
+      z-index: 1000; /* Para que esté por encima de otros elementos */
+    }
+
+    #logo {
+      width: 100px;
+    }
+
+    #logo img {
+      width: 100%;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      flex: 1;
+      justify-content: center;
+    }
+
+    nav ul li {
+      position: relative;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 10px;
+    }
+
+    nav ul li a:hover::before {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: 0;
+      width: 100%;
+      height: calc(100% + 10px);
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .menu {
+      display: none;
+      position: absolute;
+      background-color: #b0bec5;
+      border-radius: 5px;
+      padding: 10px;
+      top: 60px;
+      left: 0;
+      z-index: 1;
+    }
+
+    nav ul li:hover .menu {
+      display: block;
+    }
+
+    #login {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      margin-left: 20px;
+    }
+
+    #login img {
+      width: 20px;
+      height: 20px;
+    }
+
+    #search-container {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+      margin-right: 20px;
+    }
+
+    #search-input {
+      border: none;
+      padding: 8px;
+      border-radius: 5px;
+      margin-right: 10px;
+      width: 200px;
+    }
+
+    #search-button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #valorant {
+      font-size: 36px;
+      color: red; /* Cambiando el color a morado */
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-left: 40px;
+    }
+
+    /* Estilos adicionales para el contenido de noticias */
+    #contenido-noticias {
+      padding: 20px;
+      max-width: 100%; /* Ocupa todo el ancho de la página */
+      margin: 0;
+      text-align: center; /* Centrar el texto */
+      margin-top: 90px; /* Añadir margen superior igual a la altura del encabezado */
+    }
+
+
+/* Estilo para el título de noticias */
+  #titulo-noticias {
+  font-size: 40px; /* Aumenta el tamaño del texto */
+  margin-bottom: 1px; /* Reducir el margen inferior */
+  color: purple; /* Cambia el color a morado */
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+
+    .image-container {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+    }
+
+    .image-container img {
+      width: 70%; /* Reduciendo el ancho de las imágenes */
+      max-height: 850px; /* Limitando la altura de las imágenes */
+    }
+
+    /* Agregando margen derecho a la primera imagen */
+    .image-container img:first-child {
+      margin-right: 20px;
+    }
+
+    /* Estilos para la sección de la segunda noticia */
+    .noticia {
+      background-color: black;
+      color: white;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    /* Estilos para las imágenes de la segunda noticia */
+    .noticia img {
+      max-width: 100%;
+      max-height: 400px;
+      margin: 10px 0;
+    }
+
+    /* Estilos para el título de la segunda noticia */
+    .noticia h2 {
+      font-size: 30px;
+      margin-top: 20px;
+    }
+
+    /* Estilos para el texto de la segunda noticia */
+    .noticia p {
+      font-size: 18px;
+      margin-top: 10px;
+      text-align: justify;
+    }
+
+      /* Estilos para el footer */
+    #footer-content{
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+      /* Estilos para el texto de la primera noticia */
+      .noticia p {
+      font-size: 18px;
+      margin-top: 10px;
+      text-align: justify;
+      max-width: 600px; /* Límite de ancho */
+      word-wrap: break-word; /* Permite saltos de línea automáticos */
+    }
+
+    /* Estilos para el texto de la segunda noticia */
+    .noticia h2 + p {
+      font-size: 18px;
+      margin-top: 10px;
+      text-align: justify;
+      max-width: 600px; /* Límite de ancho */
+      word-wrap: break-word; /* Permite saltos de línea automáticos */
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <div id="logo">
+      <a href="index valorant.html">
+        <img src="logo.jpeg" alt="Riot Games">
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li>
+          <a href="noticias.html">NOTICIAS</a>
+        </li>
+        <li>
+          <a href="info_juego.html">INFO DEL JUEGO</a>
+        </li>
+        <li>
+          <a href="pase_batalla.html">PASE DE BATALLA</a>
+        </li>
+        <li>
+          <a href="comunidad.html">COMUNIDAD</a>
+        </li>
+        <li>
+          <div id="valorant">Valorant</div>
+        </li>
+      </ul>
+    </nav>
+    <div id="search-container">
+      <input type="text" id="search-input" placeholder="Buscar...">
+      <button id="search-button">Buscar</button>
+    </div>
+    <div id="login">
+      <img src="icono de inicio de sesion.png" alt="Icono de Iniciar Sesión">
+      <!-- Texto o enlace para iniciar sesión -->
+    </div>
+  </header>
+
+  <!-- Contenido de la página de Noticias -->
+  <div id="contenido-noticias">
+    <h1 id="titulo-noticias">NOTICIAS DEL MUNDO DE VALORANT</h1>
+    <div class="image-container">
+      <img src="noticiaimp1.png" alt="Imagen 1">
+      <img src="noticiaimp2.png" alt="Imagen 2">
+    </div>
+
+<!-- Nueva sección de noticias -->
+<div class="noticia">
+  <div style="background-color: black; padding: 20px; color: white; display: flex; align-items: center;">
+    <img src="carrusel.jpeg" alt="Imagen Izquierda" style="max-width: 100%; height: auto; flex: 1; margin-right: 20px;">
+    <div style="flex: 1.2; text-align: center;"> <!-- Alinea el texto al centro -->
+      <h2>NUEVA ACTUALIZACIÓN DISPONIBLE</h2>
+      <p>
+        La nueva actualización de Valorant acaba de salir, corrigiendo algunos
+        errores de agentes y volviendo a ver mapas que hace tiempo se quitaron
+        del competitivo, es el caso de Breeze y Split. En los cambios de agentes 
+        se muestra cambios a Deadlock, ya que no tuvo un gran recibimiento con
+        la agregación de ese nuevo centinela, y también se modificó el competitivo.<br><br> <!-- Agrega saltos de línea -->
+        
+        Una de las modificaciones enormes es encontrar a las personas tóxicas
+        y que usan cheats, o sea trampas en el juego. Se trabajó mucho para evitar
+        y limpiar la comunidad de esta toxicidad de jugadores. Además, ya no 
+        se permitirá que existan Smurfs.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Nueva sección de noticias con fondo celeste -->
+<div class="noticia" style="background-color: #b0bec5; padding: 20px; color: black;">
+  <div style="display: flex; align-items: center;">
+    <div style="flex: 1.2; text-align: center;"> <!-- Alinea el texto al centro -->
+      <h2>EL EVENTO DE PREMIER DE VUELTA</h2>
+      <p>
+        El modo de Premier en Valorant está de vuelta después de mucho tiempo.
+        Es un modo que da oportunidad a quienes quieren vivir la experiencia y/o 
+        volverse profesionales que lo logren. Un evento que surgió como idea, y que
+        ahora es el paso de jugadores a ser profesionales y competitivos.<br><br> <!-- Agrega saltos de línea -->
+
+        Consiste en formar tu propio equipo y clasificar en una serie
+        de partidas para jugar un pequeño torneo, donde el ganador se 
+        lleva un llavero que demuestra que es uno de los grandes jugadores
+        del circuito. Sumérgete en esta nueva experiencia.
+      </p>
+    </div>
+    <img src="carrusel2.jpeg" alt="Imagen Derecha" style="max-width: 100%; height: auto; flex: 1; margin-left: 20px;">
+  </div>
+</div>
+
+   <!-- Footer -->
+    <footer>
+      <div id="footer-content">
+     © 2023 Todos los derechos reservados - Contacto: dennisaurio2000@gmail.com
+      </div>
+   </footer>
+
+
+  </div>
+</body>
+</html>
