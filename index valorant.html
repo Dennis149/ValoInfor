@@ -205,28 +205,28 @@
     }
 
     #titulo-atrevete {
-      font-size: 46px;
+      font-size: 36px; /* Tamaño del título para dispositivos móviles */
       color: #333;
     }
 
     #texto-atrevete {
-     font-size: 24px;
-     color: #666;
-     margin: 20px 0;
-     max-width: 500px; /* Ajusta el ancho máximo según tus necesidades */
-     word-wrap: break-word;
-  }
+      font-size: 18px; /* Tamaño del texto para dispositivos móviles */
+      color: #666;
+      margin: 20px 0;
+      max-width: 90%; /* Ajusta el ancho máximo según tus necesidades */
+      word-wrap: break-word;
+    }
 
     /* Estilos para las imágenes en fila */
     .imagen {
       display: inline-block;
-      margin: 80px;
+      margin: 20px; /* Espacio entre las imágenes para dispositivos móviles */
       transition: transform 0.3s; /* Agregar transición para el efecto de escala al pasar el ratón */
       cursor: pointer; /* Cambiar el cursor al pasar el ratón por encima de la imagen */
     }
 
     .imagen:hover {
-      transform: scale(2); /* Aumentar el tamaño de la imagen al pasar el ratón */
+      transform: scale(1.2); /* Aumentar el tamaño de la imagen al pasar el ratón */
     }
 
     /* Estilos para el footer */
@@ -237,6 +237,16 @@
       padding: 10px 0;
     }
 
+    /* Media query para dispositivos móviles */
+    @media (max-width: 768px) {
+      #titulo-atrevete {
+        font-size: 24px; /* Tamaño del título para dispositivos móviles más pequeños */
+      }
+
+      #texto-atrevete {
+        font-size: 16px; /* Tamaño del texto para dispositivos móviles más pequeños */
+      }
+    }
   </style>
 </head>
 <body>
@@ -289,78 +299,77 @@
       <div id="next-button" class="slider-button">&#9654;</div>
     </div>
 
- <!-- Contenedor del texto "ATREVETE" y el texto debajo -->
-<div id="texto-contenedor" style="display: flex; flex-direction: column; align-items: center;">
-  <!-- Título "ATREVETE" -->
-  <h1 id="titulo-atrevete">ATREVETE</h1>
+    <!-- Contenedor del texto "ATREVETE" y el texto debajo -->
+    <div id="texto-contenedor" style="display: flex; flex-direction: column; align-items: center;">
+      <!-- Título "ATREVETE" -->
+      <h1 id="titulo-atrevete">ATREVETE</h1>
 
-  <!-- Texto debajo del título -->
-  <p id="texto-atrevete" style="text-align: center;">
-    Conoce un nuevo mundo, un nuevo juego que combina
-    todo lo más deseado, ESTRATEGIA, ARMAS Y PODERES.
-    Estás listo para afrontar el reto, ven y visita las páginas oficiales
-    de VALORANT y RIOTGAMES. ¡HAZ CLICK!.
-  </p>
-  <div style="height: 20px; background-color: white;"></div>
-</div>
+      <!-- Texto debajo del título -->
+      <p id="texto-atrevete" style="text-align: center;">
+        Conoce un nuevo mundo, un nuevo juego que combina
+        todo lo más deseado, ESTRATEGIA, ARMAS Y PODERES.
+        Estás listo para afrontar el reto, ven y visita las páginas oficiales
+        de VALORANT y RIOTGAMES. ¡HAZ CLICK!.
+      </p>
+      <div style="height: 20px; background-color: white;"></div>
+    </div>
 
-<!-- Imágenes en fila con enlaces -->
-<a href="https://playvalorant.com/es-es/pbe/" target="_blank">
-  <img class="imagen" src="inicio1.jpeg" alt="Imagen 1">
-</a>
-<a href="https://www.riotgames.com/es" target="_blank">
-  <img class="imagen" src="inicio2.png" alt="Imagen 2" style="margin-right: 20px;"> <!-- Aumenté el margen derecho aquí -->
-</a>
+    <!-- Imágenes en fila con enlaces -->
+    <a href="https://playvalorant.com/es-es/pbe/" target="_blank">
+      <img class="imagen" src="inicio1.jpeg" alt="Imagen 1">
+    </a>
+    <a href="https://www.riotgames.com/es" target="_blank">
+      <img class="imagen" src="inicio2.png" alt="Imagen 2" style="margin-right: 20px;"> <!-- Aumenté el margen derecho aquí -->
+    </a>
 
-<!-- Líneas blancas para separar las imágenes del footer -->
-<div style="height: 30px; background-color: white;"></div>
-<div style="height: 30px; background-color: white;"></div>
-<div style="height: 30px; background-color: white;"></div>
-<div style="height: 30px; background-color: white;"></div>
-
-    <script>
-      const images = ["videojuegos inicio1.jpg", "videojuegos inicio2.png", "videojuegos inicio3.png"];
-      let currentIndex = 0;
-
-      const imgElement = document.querySelector("#image-slider img");
-      const prevButton = document.querySelector("#prev-button");
-      const nextButton = document.querySelector("#next-button");
-
-      function updateImage() {
-        imgElement.src = images[currentIndex];
-      }
-
-      prevButton.addEventListener("click", () => {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        updateImage();
-      });
-
-      nextButton.addEventListener("click", () => {
-        currentIndex = (currentIndex + 1) % images.length;
-        updateImage();
-      });
-
-      // Mostrar la primera imagen al cargar la página
-      updateImage();
-
-      // Desvanecer la pantalla de inicio y mostrar el contenido después de 5 segundos
-      setTimeout(() => {
-        const inicio = document.getElementById("inicio");
-        const contenido = document.getElementById("contenido");
-
-        inicio.style.opacity = "0";
-        contenido.style.opacity = "1";
-        setTimeout(() => {
-          inicio.style.display = "none";
-        }, 1000); // Espera 1 segundo para ocultar la pantalla de inicio
-      }, 3000); // Espera 5 segundos antes de realizar la transición
-    </script>
+    <!-- Líneas blancas para separar las imágenes del footer -->
+    <div style="height: 30px; background-color: white;"></div>
+    <div style="height: 30px; background-color: white;"></div>
+    <div style="height: 30px; background-color: white;"></div>
+    <div style="height: 30px; background-color: white;"></div>
   </div>
 
-    <!-- Footer -->
-    <footer>
-      © 2023 Todos los derechos reservados - Contacto: dennisaurio2000@gmail.com
-    </footer>
- 
+  <!-- Footer -->
+  <footer>
+    © 2023 Todos los derechos reservados - Contacto: dennisaurio2000@gmail.com
+  </footer>
+
+  <script>
+    const images = ["videojuegos inicio1.jpg", "videojuegos inicio2.png", "videojuegos inicio3.png"];
+    let currentIndex = 0;
+
+    const imgElement = document.querySelector("#image-slider img");
+    const prevButton = document.querySelector("#prev-button");
+    const nextButton = document.querySelector("#next-button");
+
+    function updateImage() {
+      imgElement.src = images[currentIndex];
+    }
+
+    prevButton.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      updateImage();
+    });
+
+    nextButton.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      updateImage();
+    });
+
+    // Mostrar la primera imagen al cargar la página
+    updateImage();
+
+    // Desvanecer la pantalla de inicio y mostrar el contenido después de 5 segundos
+    setTimeout(() => {
+      const inicio = document.getElementById("inicio");
+      const contenido = document.getElementById("contenido");
+
+      inicio.style.opacity = "0";
+      contenido.style.opacity = "1";
+      setTimeout(() => {
+        inicio.style.display = "none";
+      }, 1000); // Espera 1 segundo para ocultar la pantalla de inicio
+    }, 3000); // Espera 5 segundos antes de realizar la transición
+  </script>
 </body>
 </html>

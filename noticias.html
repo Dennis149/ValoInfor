@@ -224,6 +224,50 @@
       word-wrap: break-word; /* Permite saltos de línea automáticos */
     }
 
+/* Estilos para el formulario de envío de noticias */
+#enviar-noticia-form {
+  margin-top: 20px;
+  background-color: #333; /* Fondo gris oscuro */
+  padding: 20px;
+  border-radius: 5px;
+}
+
+/* Estilos para el área de texto */
+#noticia-text {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #888; /* Borde gris */
+  border-radius: 5px;
+}
+
+/* Estilos para el botón de enviar noticia */
+#enviar-noticia {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Estilos para el campo de selección de imágenes */
+#noticia-image {
+  display: block;
+  margin: 0 auto;
+  font-size: 16px;
+}
+
+/* Estilos para la etiqueta "Archivo" */
+label {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 10px;
+  color: #3498db;
+}
+    
   </style>
 </head>
 <body>
@@ -313,6 +357,21 @@
   </div>
 </div>
 
+<!-- Nuevo apartado para enviar noticias -->
+<div class="noticia" style="background-color: #333; padding: 20px; color: white;">
+  <h2 style="text-align: center;">TIENES ALGUNA NOTICIA SOBRE VALORANT</h2>
+  <h3 style="text-align: center;">ESCRIBENOS AQUI</h3>
+  <!-- Formulario para enviar noticias -->
+  <form id="enviar-noticia-form">
+    <div style="text-align: center;">
+      <textarea id="noticia-text" rows="5" placeholder="Escribe tu noticia aquí..."></textarea>
+      <label for="noticia-image" style="color: white;">Archivo:</label>
+      <input type="file" id="noticia-image" accept="image/*" style="display: block; margin: 10px auto; font-size: 16px;">
+      <button id="enviar-noticia" style="margin-top: 10px;">Enviar Noticia</button>
+    </div>
+  </form>
+</div>
+
    <!-- Footer -->
     <footer>
       <div id="footer-content">
@@ -320,7 +379,18 @@
       </div>
    </footer>
 
-
   </div>
+
+  <script>
+    // Función para mostrar un mensaje cuando se envía una noticia
+    function mostrarMensaje() {
+      alert("Noticia enviada");
+    }
+  
+    // Agregamos un evento clic al botón de enviar noticia
+    document.getElementById("enviar-noticia").addEventListener("click", function() {
+      mostrarMensaje();
+    });
+  </script>
 </body>
 </html>

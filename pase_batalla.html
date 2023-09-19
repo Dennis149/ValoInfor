@@ -7,13 +7,14 @@
   <link rel="icon" type="image/png" href="iniciodepagina.gif">
   <style>
     body {
+      /* Configura la imagen de fondo */
+      background-image: url('pasedebatalla.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      background-image: url('pasedebatalla.jpg'); /* Reemplaza con la ruta de tu imagen de fondo */
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed; /* Esto hará que la imagen de fondo sea fija */
     }
 
     header {
@@ -133,42 +134,27 @@
       font-size: 16px;
     }
 
-    #valorant {
+    /* Estilos para el texto dentro del fondo */
+    .overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       font-size: 36px;
-      color: red;
       font-weight: bold;
+      color: white;
+      text-align: center;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-left: 40px;
     }
 
-    /* Estilos para el contenido de noticias */
-    #contenido-noticias {
-      padding: 20px;
-      max-width: 800px;
-      margin: 0 auto;
-      background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco transparente */
-      border-radius: 10px; /* Bordes redondeados */
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Sombra */
-    }
-
-    #contenido-noticias h1 {
-      font-size: 24px;
-      color: #333;
-      margin-bottom: 10px;
-    }
-
-    #contenido-noticias p {
-      font-size: 16px;
-      color: #666;
-    }
-
-  /* Estilos para el footer */
-  footer {
+    /* Estilos para el pie de página */
+    footer {
       background-color: black;
       color: white;
       text-align: center;
       padding: 10px 0;
+      position: relative;
+      z-index: 1000;
     }
   </style>
 </head>
@@ -193,9 +179,7 @@
         <li>
           <a href="comunidad.html">COMUNIDAD</a>
         </li>
-        <li>
-          <div id="valorant">Valorant</div>
-        </li>
+       
       </ul>
     </nav>
     <div id="search-container">
@@ -208,13 +192,32 @@
     </div>
   </header>
 
- 
+  <!-- Contenido principal (noticias) -->
+  <div id="contenido-noticias">
+    <a href="#" class="overlay-text" id="overlay-text">NUEVAS SKINS Y ACCESORIOS<br>PRÓXIMAMENTE</a>
+  </div>
 
  <!-- Footer -->
  <footer>
   <div id="footer-content">
- © 2023 Todos los derechos reservados - Contacto: dennisaurio2000@gmail.com
+    © 2023 Todos los derechos reservados - Contacto: dennisaurio2000@gmail.com
   </div>
 </footer>
+
+  <!-- Tu código JavaScript para controlar las transiciones aquí -->
+  <script>
+    const contenidoNoticias = document.getElementById("contenido-noticias");
+
+    contenidoNoticias.addEventListener("click", function () {
+      // Cambia el fondo al hacer clic
+      document.body.style.backgroundImage = "url('fondodepasebatalla.png')";
+
+      // Oculta el texto
+      const overlayText = document.getElementById("overlay-text");
+      overlayText.style.display = "none";
+    });
+  </script>
+</body>
+</html>
 </body>
 </html>
